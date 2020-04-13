@@ -1,17 +1,16 @@
-@extends('products.layout')
+@extends('layouts.app', ['titlePage' => __('New Location')])
   
 @section('content')
-<div class="row">
-<br>
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Product</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+          <a class="btn btn-danger pull-right" href="{{ route('products.index') }}"> Back</a>
+          <h4 class="card-title ">Fill New Location Details</h4>
+          </div>
+    <div class="card-body">
    
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -27,29 +26,31 @@
 <form action="{{ route('products.store') }}" method="POST">
     @csrf
   
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+     <div class="form-group">
+                <strong>Location Name:</strong>
+                <input type="text" name="name" class="form-control" placeholder="Location Name..">
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Umur:</strong>
-                <input type="text" name="umur" class="form-control" placeholder="Umur">
+                <strong>Latitude:</strong>
+                <input type="text" name="lat" class="form-control" placeholder="Latitude..">
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Detail:</strong>
-                <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+                <strong>Longitude:</strong>
+                <input type="text" name="long" class="form-control" placeholder="Longitude..">
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="form-group">
+                <strong>Details:</strong>
+                <textarea class="form-control" style="height:150px" name="details" placeholder="Detail.."></textarea>
+            </div>
+            <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
     </div>
-   
 </form>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection

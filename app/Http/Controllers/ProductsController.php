@@ -40,7 +40,9 @@ class ProductsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
+            'details' => 'required',
         ]);
   
         Product::create($request->all());
@@ -82,7 +84,9 @@ class ProductsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
+            'details' => 'required',
         ]);
   
         $product->update($request->all());

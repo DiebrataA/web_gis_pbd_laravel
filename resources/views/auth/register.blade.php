@@ -11,8 +11,8 @@
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
             <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-facebook-square"></i>
+            <a href="https://github.com/DiebrataA/web_gis_pbd_laravel.git" class="btn btn-just-icon btn-link btn-white">
+                <i class="fa fa-github"></i>
               </a>
               <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-twitter"></i>

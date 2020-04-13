@@ -1,55 +1,57 @@
-@extends('products.layout')
-   
+@extends('layouts.app', ['titlePage' => __('Edit Location')])
+  
 @section('content')
+<div class="content">
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+          <a class="btn btn-danger pull-right" href="{{ route('products.index') }}"> Back</a>
+          <h4 class="card-title ">Edit Location Details</h4>
+          </div>
+    <div class="card-body">
+   
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+   
+<form action="{{ route('products.update',$product->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+  
+     <div class="form-group">
+                <strong>Location Name:</strong>
+                <input type="text" name="name" value="{{ $product->name}}" class="form-control" placeholder="Location Name..">
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+            <div class="form-group">
+                <strong>Latitude:</strong>
+                <input type="text" name="lat" value="{{ $product->lat}}" class="form-control" placeholder="Latitude..">
+            </div>
+            <div class="form-group">
+                <strong>Longitude:</strong>
+                <input type="text" name="long" value="{{ $product->long}}" class="form-control" placeholder="Longitude..">
+            </div>
+            <div class="form-group">
+                <strong>Details:</strong>
+                <textarea class="form-control" style="height:150px" name="details" placeholder="Detail..">{{ $product->details}}</textarea>
+            </div>
+            <div class="card-footer ml-auto mr-auto">
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </div>
     </div>
-   
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-  
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-   
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Umur:</strong>
-                    <input type="text" name="umur" value="{{ $product->umur }}" class="form-control" placeholder="Umur">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Detail:</strong>
-                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $product->detail }}</textarea>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-   
-    </form>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection
