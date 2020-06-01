@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    
+    public function showMarker(){
+        $products =DB::select('select * from products');
+        return view('home',['products'=>$products]);
+    }
+
+    
 }

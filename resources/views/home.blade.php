@@ -31,42 +31,57 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 // map end
 
-// below is marker and circle
-var marker = L.marker([1.3521, 103.8190]).addTo(mymap);
-var circle = L.circle([1.3521, 103.8190], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(mymap);
-//marker and circle end
 
-// polygon
-var polygon = L.polygon([
-    [1.311893, 103.836594],
-    [1.3080018, 103.8465358],
-    [1.3050349, 103.8356412]
-]).addTo(mymap);
-
-// popup
-marker.bindPopup("<b>HelloWorld</b><br>");
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
 var popup = L.popup();
 
 
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("Loc :" + llstr + "<br>")
-        .openOn(mymap);
 
-        var ll = marker.getLatLng();
-        var llstr = latlng.lat;
+    var saveMarkerToMaps = [
+      @foreach ($products as $markermap)
+              {   lat: '{{$markermap->lat}}',
+                  long: '{{$markermap->long}}',
+                  name : '{{$markermap->name }}',
+                  details : '{{$markermap->details}}',
+                  id : {{$markermap->id }}
+              },
+                  @endforeach
+              ]
+              console.log(saveMarkerToMaps);
+
+  for( var i = 0; i < saveMarkerToMaps.length; i++){
+    var addPopup =  "<h5>Lokasi adalah: </h5>"+saveMarkerToMaps[i].name;
+      var customOptions =
+        {
+          'maxWidth': '500',
+          'className' : 'custom'
+        };
+  var marker = L.marker([
+    saveMarkerToMaps[i].lat, 
+    saveMarkerToMaps[i].long]).bindPopup(addPopup,customOptions).addTo(mymap);
+}
+// marker2.on('click', showDialog);
+
+// function showDialog(e){
+//   var addPopup2 =  "<h5>Add Location</h5><form action=\"{{ route('products.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">    <label for=\"landmark_nama\">Name:</label><br><input type=\"text\" id=\"name\" name=\"name\" required><br>\ <label for=\"landmark_latitude\">Latitude:</label><br><input type=\"text\" id=\"latFld\" name=\"lat\" value="+lat[1]+"  required><br><label for=\"landmark_longitude\">Longitude:</label><br><input type=\"text\" id=\"lngFld\" name=\"long\" value="+lng[0]+" required><br><label for=\"landmark_info\">Detail Information:</label><br><input type=\"text\" id=\"details\" name=\"details\" required><br><br><input type=\"submit\" value=\"Submit\"></form>";
+//       var customOptions2 =
+//         {
+//           'maxWidth': '500',
+//           'className' : 'custom'
+//         };
+//       var newMarker2 = new L.marker(e.latlng).bindPopup(addPopup2,customOptions2).addTo(mymap);
+// }
+
+// function onMapClick(e) {
+//     popup
+//         .setLatLng(e.latlng)
+//         .setContent("Loc :" + llstr + "<br>")
+//         .openOn(mymap);
+//         var ll = marker.getLatLng();
+//         var llstr = latlng.lat;
 // alert("latitude: " + ll.lat);
 // alert("longitude: " + ll.lng);
-}
-marker.on('click', onMapClick );
+// }
+// marker.on('click', onMapClick );
 
 
 //Add Marker on Click
@@ -74,22 +89,17 @@ function addMarker(e){
       var coord = e.latlng.toString().split(',');
       var lat = coord[0].split('(');
       var lng = coord[1].split(')');
-      var test = 'hai';
       // document.getElementById('latFld').value = test;
-      var addPopup =  "<h5>Add Landmark</h5><form action=\"{{ route('products.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">    <label for=\"landmark_nama\"></label><br><input type=\"text\" id=\"name\" name=\"name\" required><br>\ <label for=\"landmark_latitude\">Latitude:</label><br><input type=\"text\" id=\"latFld\" name=\"lat\" value="+lat[1]+"  required><br><label for=\"landmark_longitude\">Longitude:</label><br><input type=\"text\" id=\"lngFld\" name=\"long\" value="+lng[0]+" required><br><label for=\"landmark_info\">Detail Information:</label><br><input type=\"text\" id=\"details\" name=\"details\" required><br><br><input type=\"submit\" value=\"Submit\"></form>";
-      
-      
+      var addPopup =  "<h5>Add Location</h5><form action=\"{{ route('products.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">    <label for=\"landmark_nama\">Name:</label><br><input type=\"text\" id=\"name\" name=\"name\" required><br>\ <label for=\"landmark_latitude\">Latitude:</label><br><input type=\"text\" id=\"latFld\" name=\"lat\" value="+lat[1]+"  required><br><label for=\"landmark_longitude\">Longitude:</label><br><input type=\"text\" id=\"lngFld\" name=\"long\" value="+lng[0]+" required><br><label for=\"landmark_info\">Detail Information:</label><br><input type=\"text\" id=\"details\" name=\"details\" required><br><br><input type=\"submit\" value=\"Submit\"></form>";
       var customOptions =
         {
           'maxWidth': '500',
           'className' : 'custom'
         };
-
       var newMarker = new L.marker(e.latlng).bindPopup(addPopup,customOptions).addTo(mymap);
     }
-   
-
     mymap.on('click', addMarker);
+
     
 </script>
 </div>

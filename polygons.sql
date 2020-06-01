@@ -1,0 +1,72 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 01 Jun 2020 pada 07.01
+-- Versi server: 10.1.40-MariaDB
+-- Versi PHP: 7.3.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `pbdlur`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `polygons`
+--
+
+CREATE TABLE `polygons` (
+  `id_polygon` int(11) NOT NULL,
+  `coordinates` longtext NOT NULL,
+  `name_polygon` varchar(255) NOT NULL,
+  `warna` varchar(255) NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `polygons`
+--
+
+INSERT INTO `polygons` (`id_polygon`, `coordinates`, `name_polygon`, `warna`, `keterangan`) VALUES
+(15, '[{lat:5.582809715689659,lng:95.3256953125},{lat:4.094035914516135,lng:95.5893671875},{lat:3.524011190750604,lng:96.424328125},{lat:4.356990834350142,lng:98.4018671875},{lat:5.670276882572475,lng:98.1381953125},{lat:6.02001097631544,lng:96.0288203125},{lat:6.02001097631544,lng:96.0288203125}]', 'aceh', 'blue', 'aceh provisinnya anggara'),
+(16, '[{lat:2.264963852319922,lng:100.818859375},{lat:1.781868257723194,lng:101.01661328125},{lat:-0.12946542608145692,lng:101.50001171875},{lat:-0.10749281694370072,lng:102.2690546875},{lat:0.5736498795652006,lng:103.4995234375},{lat:1.4743756279351365,lng:102.6206171875},{lat:2.2430081963928514,lng:101.2143671875},{lat:2.308874162681183,lng:100.5991328125},{lat:2.308874162681183,lng:100.5991328125}]', 'riau', 'green', 'riau punyanya amel'),
+(17, '[{lat:2.04539285015056,lng:109.5639765625},{lat:0.9471514788715123,lng:111.08008984375},{lat:-2.370000337018958,lng:110.33301953125},{lat:-0.01960225461958753,lng:108.9487421875},{lat:1.1009354606504367,lng:108.8608515625},{lat:1.9795155420930604,lng:109.32227734375},{lat:1.9795155420930604,lng:109.32227734375}]', 'pontianak', 'red', 'pontianak punya erika'),
+(18, '[{lat:-0.32721766374244327,lng:100.35743359375},{lat:-0.8105908385324334,lng:100.203625},{lat:-2.238271018541472,lng:100.7749140625},{lat:-4.71641518050589,lng:102.95020703125},{lat:-5.722952866013395,lng:104.510265625},{lat:-5.919686863975663,lng:105.10352734375},{lat:-5.11046880440619,lng:105.037609375},{lat:-4.409773408636456,lng:104.5542109375},{lat:-3.225904368840354,lng:103.455578125},{lat:-1.9308577727601213,lng:102.37891796875},{lat:-1.1401324727260134,lng:101.85157421875},{lat:-0.3711621590352826,lng:101.14844921875},{lat:-0.17341058400485013,lng:100.31348828125},{lat:-0.17341058400485013,lng:100.31348828125}]', 'rumah dayat', 'yellow', 'ini punya dayat');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `polygons`
+--
+ALTER TABLE `polygons`
+  ADD PRIMARY KEY (`id_polygon`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `polygons`
+--
+ALTER TABLE `polygons`
+  MODIFY `id_polygon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
