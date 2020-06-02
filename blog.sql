@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2020 at 07:55 PM
+-- Generation Time: Jun 02, 2020 at 12:09 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -57,7 +57,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_04_11_134849_create_products_table', 1),
-(5, '2020_06_01_042203_added_admin', 2);
+(5, '2020_06_01_042203_added_admin', 2),
+(6, '2020_06_01_184432_added_polygon', 3),
+(7, '2020_06_02_063536_added_polygon2', 4);
 
 -- --------------------------------------------------------
 
@@ -78,22 +80,21 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `polygons` (
-  `id_polygon` int(11) NOT NULL,
-  `coordinates` longtext NOT NULL,
-  `name_polygon` varchar(255) NOT NULL,
-  `warna` varchar(255) NOT NULL,
-  `keterangan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name_polygon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `coordinates` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `warna` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `polygons`
 --
 
-INSERT INTO `polygons` (`id_polygon`, `coordinates`, `name_polygon`, `warna`, `keterangan`) VALUES
-(15, '[{lat:1.370757,lng:103.796768},{lat:1.341068,lng:103.796082},{lat:1.364922,lng:103.846035}]', 'TestSingapore', '#34e1eb', 'Singapore'),
-(16, '[{lat:2.264963852319922,lng:100.818859375},{lat:1.781868257723194,lng:101.01661328125},{lat:-0.12946542608145692,lng:101.50001171875},{lat:-0.10749281694370072,lng:102.2690546875},{lat:0.5736498795652006,lng:103.4995234375},{lat:1.4743756279351365,lng:102.6206171875},{lat:2.2430081963928514,lng:101.2143671875},{lat:2.308874162681183,lng:100.5991328125},{lat:2.308874162681183,lng:100.5991328125}]', 'riau', 'green', 'riau punyanya amel'),
-(17, '[{lat:2.04539285015056,lng:109.5639765625},{lat:0.9471514788715123,lng:111.08008984375},{lat:-2.370000337018958,lng:110.33301953125},{lat:-0.01960225461958753,lng:108.9487421875},{lat:1.1009354606504367,lng:108.8608515625},{lat:1.9795155420930604,lng:109.32227734375},{lat:1.9795155420930604,lng:109.32227734375}]', 'pontianak', 'red', 'pontianak punya erika'),
-(18, '[{lat:-0.32721766374244327,lng:100.35743359375},{lat:-0.8105908385324334,lng:100.203625},{lat:-2.238271018541472,lng:100.7749140625},{lat:-4.71641518050589,lng:102.95020703125},{lat:-5.722952866013395,lng:104.510265625},{lat:-5.919686863975663,lng:105.10352734375},{lat:-5.11046880440619,lng:105.037609375},{lat:-4.409773408636456,lng:104.5542109375},{lat:-3.225904368840354,lng:103.455578125},{lat:-1.9308577727601213,lng:102.37891796875},{lat:-1.1401324727260134,lng:101.85157421875},{lat:-0.3711621590352826,lng:101.14844921875},{lat:-0.17341058400485013,lng:100.31348828125},{lat:-0.17341058400485013,lng:100.31348828125}]', 'rumah dayat', 'yellow', 'ini punya dayat');
+INSERT INTO `polygons` (`id`, `name_polygon`, `coordinates`, `warna`, `keterangan`, `created_at`, `updated_at`) VALUES
+(4, 'Keliling dulu34', '[{lat:1.3481898576646802,lng:103.81376266479492}, {lat:1.3495627681304467,lng:103.84989738464355}, {lat:1.3571995684288576,lng:103.84397506713867}, {lat:1.3481898576646802,lng:103.81376266479492}]', '#000000', 'ad', '2020-06-02 02:02:42', '2020-06-02 02:02:42');
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ ALTER TABLE `password_resets`
 -- Indexes for table `polygons`
 --
 ALTER TABLE `polygons`
-  ADD PRIMARY KEY (`id_polygon`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
@@ -206,13 +207,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `polygons`
 --
 ALTER TABLE `polygons`
-  MODIFY `id_polygon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`

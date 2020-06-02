@@ -24,14 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+       
         return view('home');
     }
 
     
-    public function showMarker(){
-        $products =DB::select('select * from products');
-        return view('home',['products'=>$products]);
-    }
+    
 
     
 }

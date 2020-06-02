@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -25,6 +25,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('products', 'ProductsController');
+Route::resource('polygons', 'PolygonController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -70,8 +71,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@showMarker')->name('home');
-Route::get('/polygon', 'ProductsController@showPolygons');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/homeMarker', 'ProductsController@showMarker');
+Route::get('/showpolygon', 'PolygonController@showPolygons');
+Route::get('/Polygon/test', 'PolygonController@index');
 
 // Route::get('/home', 'ProductsController@showMarker');
 // Route::get('/polygon','ProductsController@showPolygons'); // untuk maps

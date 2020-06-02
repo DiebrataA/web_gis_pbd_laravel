@@ -110,8 +110,8 @@ class ProductsController extends Controller
                         ->with('success','Product deleted successfully');
     }
     
-    public function showPolygons(){
-        $polygons =DB::select('select * from polygons');
-        return view('products/polygon',['polygons'=>$polygons]);
+    public function showMarker(){
+        $products =DB::select('select * from products');
+        return view('products/marker',['products'=>$products]);
     }
 }

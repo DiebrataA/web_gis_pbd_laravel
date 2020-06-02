@@ -14,6 +14,8 @@
   <div class="container" >
    <div class="row justify-content-center">
     <div class="col-md-12">
+    <a class="btn btn-danger pull-right" href="/homeMarker"> Show Marker</a>
+          <br />
     <!-- <h2>Map</h2> -->
       <div class="card card-login card-hidden mb-3">  
         <div id="mapid">
@@ -41,7 +43,7 @@ var viewPolygons = [
                 coordinates : {{$polygons->coordinates}},
                 warna : '{{$polygons->warna}}',
                 name_polygon : '{{$polygons->name_polygon}}',
-                id_polygon : {{$polygons->id_polygon }}
+                id : {{$polygons->id }}
               },
                   @endforeach
               ];
