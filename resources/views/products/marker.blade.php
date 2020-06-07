@@ -1,5 +1,4 @@
-@extends('layouts.app',  ['activePage' => 'dashboard', 'titlePage' => __('Map of Singapore')])
-
+@extends('layouts.app',  ['activePage' => 'polygon', 'titlePage' => __('Map of Singapore')])
 @section('content')
 <style>
     #mapid {
@@ -14,10 +13,10 @@
   <div class="container" >
    <div class="row justify-content-center">
     <div class="col-md-12">
-          <a class="btn btn-danger pull-right" href="/showpolygon"> Show Polygon</a>
+    <a class="btn btn-danger pull-right" href="/showpolygon"> Show Polygon</a>
           <br />
     <!-- <h2>Map</h2> -->
-      <div class="card card-login card-hidden mb-3">
+      <div class="card card-login card-hidden mb-3">  
         <div id="mapid">
        
     <script>
@@ -32,8 +31,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiYS1kaWVicmF0YSIsImEiOiJjazh2eGtjcmkwNTdlM2VsYnlmMnk3aTNiIn0.JCFT2eXYRICBCCqm7zrQNQ'
 }).addTo(mymap);
 // map end
-
-
 var popup = L.popup();
 
     var saveMarkerToMaps = [
@@ -46,7 +43,6 @@ var popup = L.popup();
               },
                   @endforeach
               ]
-              console.log(saveMarkerToMaps);
 
   for( var i = 0; i < saveMarkerToMaps.length; i++){
     var addPopup =  "<h5>Lokasi adalah: </h5>"+saveMarkerToMaps[i].name;
@@ -66,7 +62,7 @@ function addMarker(e){
       var coord = e.latlng.toString().split(',');
       var lat = coord[0].split('(');
       var lng = coord[1].split(')');
-      var addPopup =  "<h5>Add Location</h5><form action=\"{{ route('products.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">    <label for=\"landmark_nama\">Name:</label><br><input type=\"text\" id=\"name\" name=\"name\" required><br>\ <label for=\"landmark_latitude\">Latitude:</label><br><input type=\"text\" id=\"latFld\" name=\"lat\" value="+lat[1]+"  required><br><label for=\"landmark_longitude\">Longitude:</label><br><input type=\"text\" id=\"lngFld\" name=\"long\" value="+lng[0]+" required><br><label for=\"landmark_info\">Detail Information:</label><br><input type=\"text\" id=\"details\" name=\"details\" required><br><br><input type=\"submit\" value=\"Submit\"></form>";
+      var addPopup =  "<h5>Add Location</h5><form action=\"{{ route('products.store') }}\" method=\"POST\" enctype=\"multipart/form-data\">@csrf<label for=\"landmark_nama\">Name:</label><br><input type=\"text\" id=\"name\" name=\"name\" required><br>\ <label for=\"landmark_latitude\">Latitude:</label><br><input type=\"text\" id=\"latFld\" name=\"lat\" value="+lat[1]+"  required><br><label for=\"landmark_longitude\">Longitude:</label><br><input type=\"text\" id=\"lngFld\" name=\"long\" value="+lng[0]+" required><br><label for=\"landmark_info\">Detail Information:</label><br><input type=\"text\" id=\"details\" name=\"details\" required><br><br><input type=\"submit\" value=\"Submit\"></form>";
       var customOptions =
         {
           'maxWidth': '500',
@@ -76,14 +72,11 @@ function addMarker(e){
     }
     mymap.on('click', addMarker);
 
-    
 </script>
 </div>
-       
       </div>
     </div>
   </div>
-    
 </div>
 </div>
 

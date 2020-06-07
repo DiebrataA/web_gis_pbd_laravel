@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/homeMarker', 'ProductsController@showMarker');
+Route::get('/homemarker', 'ProductsController@showMarker');
 Route::get('/showpolygon', 'PolygonController@showPolygons');
 Route::get('/Polygon/test', 'PolygonController@index');
 

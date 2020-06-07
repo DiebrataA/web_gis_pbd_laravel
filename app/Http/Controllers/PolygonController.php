@@ -92,7 +92,8 @@ class PolygonController extends Controller
   
         $polygon->update($request->all());
   
-        return view('polygons/polygon');
+        return redirect()->route('polygons.index')
+        ->with('success','Product updated successfully');
     }
   
     /**

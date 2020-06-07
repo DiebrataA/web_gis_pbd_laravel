@@ -27,9 +27,8 @@ class HomeController extends Controller
        
         return view('home');
     }
-
-    
-    
-
-    
+    public function showMarker(){
+        $products =DB::select('select * from products');
+        return view('products/marker',['products'=>$products]);
+    }
 }

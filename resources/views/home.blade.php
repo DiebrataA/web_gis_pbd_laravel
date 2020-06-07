@@ -15,7 +15,7 @@
    <div class="row justify-content-center">
     <div class="col-md-12">
           <a class="btn btn-danger pull-right" href="/showpolygon"> Show Polygon</a>
-          <a class="btn btn-success pull-right" href="/homeMarker"> Show Marker</a>
+          <a class="btn btn-success pull-right" href="/homemarker"> Show Marker</a>
           <br />
     <!-- <h2>Map</h2> -->
       <div class="card card-login card-hidden mb-3">
@@ -33,6 +33,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiYS1kaWVicmF0YSIsImEiOiJjazh2eGtjcmkwNTdlM2VsYnlmMnk3aTNiIn0.JCFT2eXYRICBCCqm7zrQNQ'
 }).addTo(mymap);
 // map end
+
+
 
 
 </script>
